@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Med School Practice App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Med School Practice App</h1>
+    <nav>
+      <button data-tab="practice" class="active">Practice</button>
+      <button data-tab="upload">Upload Questions</button>
+      <button data-tab="stats">Stats</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="practice" class="tab active">
+      <div class="card">
+        <h2>Practice Questions</h2>
+        <label>
+          Filter by module
+          <select id="moduleFilter"></select>
+        </label>
+        <div id="practiceResult"></div>
+        <div id="questionArea"></div>
+      </div>
+    </section>
+
+    <section id="upload" class="tab">
+      <div class="layout-two-col">
+        <div class="card">
+          <h2>Add Single Question</h2>
+          <form id="singleQuestionForm">
+            <label>Question <textarea name="text" required></textarea></label>
+            <label>Option A <input name="a" required /></label>
+            <label>Option B <input name="b" required /></label>
+            <label>Option C <input name="c" required /></label>
+            <label>Option D <input name="d" required /></label>
+            <label>Option E <input name="e" required /></label>
+            <label>Correct Option (a-e) <input name="correct" maxlength="1" required /></label>
+            <label>Module <input name="module" required /></label>
+            <label>Lecture <input name="lecture" required /></label>
+            <button type="submit">Save Question</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Bulk Upload CSV</h2>
+          <p>Columns: <code>text,option_a,option_b,option_c,option_d,option_e,correct_option,module,lecture</code></p>
+          <input type="file" id="csvFile" accept=".csv" />
+          <button id="uploadCsvBtn">Import CSV</button>
+          <p id="uploadMessage"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="tab">
+      <div class="card">
+        <h2>Performance Overview</h2>
+        <div id="statsOverview"></div>
+      </div>
+      <div class="layout-two-col">
+        <div class="card">
+          <h3>By Module</h3>
+          <div id="moduleStats"></div>
+        </div>
+        <div class="card">
+          <h3>Weak Areas (Lecture-Level)</h3>
+          <div id="weakAreas"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
